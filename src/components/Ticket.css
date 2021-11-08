@@ -1,0 +1,128 @@
+.paymentCard {
+    background-color: #ccc;
+}
+
+.cardWrap {
+    width: 40em;
+    margin: 0 auto;
+    color: #333;
+    font-family: sans-serif;
+    border-radius: 5px;
+    background: #ccc;
+    display: flex;
+}
+
+.card {
+    float: left;
+    position: relative;
+    padding: 1em;
+
+}
+
+.ticketImg {
+    flex: 0.5 0 0;
+    margin-right: 15px;
+}
+
+.ticketData {
+    flex: 2 0 0;
+    text-align: left;
+}
+
+/* .ticketImg img {
+    width: 200px;
+    height: 200px;
+} */
+
+/* .movieName {} */
+
+.cardLeft {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    flex-direction: row;
+    border-right: 1px dotted rgba(0, 0, 0, .5);
+    flex: 2 0 0;
+}
+
+.txt-gray {
+    color: rgb(216, 216, 216);
+}
+
+.cardRight {
+    border-left: 0.18em dashed #fff;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    flex: 1 0 0;
+}
+
+.cardRight:before,
+.cardRight:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0.9em;
+    height: 0.9em;
+    border-radius: 50%;
+    left: -0.5em;
+    background: #ccc;
+}
+
+.cardRight:before {
+    top: -0.4em;
+}
+
+.cardRight:after {
+    bottom: -0.4em;
+}
+
+.eye {
+    position: relative;
+    width: 2em;
+    height: 1.5em;
+    background: #fff;
+    margin: 0 auto;
+    border-radius: 1em/0.6em;
+    z-index: 1;
+}
+
+.eye:before,
+.eye:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.eye:before {
+    width: 1em;
+    height: 1em;
+    background: #e84c3d;
+    z-index: 2;
+    left: 8px;
+    top: 4px;
+}
+
+.eye:after {
+    width: 0.5em;
+    height: 0.5em;
+    background: #fff;
+    z-index: 3;
+    left: 12px;
+    top: 8px;
+}
+
+.number {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.number h3 {
+    color: #d1d1d1;
+    margin: 0.9 em 0 0 0;
+    font-size: 1.5em;
+}
+
+.number span {
+    display: block;
+    color: #a2aeae;
+}

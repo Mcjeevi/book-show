@@ -1,0 +1,276 @@
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+
+.progressBar {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: auto;
+}
+
+
+.progressBar li {
+  list-style-type: none;
+  float: left;
+  width: 20%;
+  position: relative;
+  text-align: center;
+}
+
+.progressBar li:after {
+  content: " ";
+  line-height: 30px;
+  width: 100%;
+  height: 5px;
+  border: 1px solid #ddd;
+  display: block;
+  text-align: center;
+  margin: 10px auto 10px;
+  background-color: white;
+}
+
+.progressBar li.active {
+  color: dodgerblue;
+}
+
+.progressBar li.active:before {
+  border-color: dodgerblue;
+  background-color: dodgerblue
+}
+
+.progressBar .active:after {
+  background-color: dodgerblue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.errorMsg {
+  color: red;
+  text-align: left;
+}
+
+.movie-layout {
+  flex-wrap: nowrap;
+}
+
+.col-md-2 {
+  padding: 0px 10px;
+}
+
+.col-md-6 {
+  padding: 0px 25px;
+}
+
+.seat {
+  width: 20px;
+  height: 20px;
+  margin: 3px;
+  cursor: pointer;
+}
+
+.seat:hover {
+  transform: scale(1.1);
+}
+
+.row {
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.seat-grey {
+  background-color: #ddd;
+}
+
+.seat-black {
+  background-color: black;
+}
+
+.seat-undefined {
+  cursor: auto;
+  pointer-events: none;
+}
+
+.movie-complex p {
+  text-align: center;
+  font-size: 20px;
+}
+
+.movie-selector {
+  width: 250px;
+}
+
+
+.Movies {
+  margin-bottom: 24px;
+}
+
+.Movies select {
+  appearance: none;
+  background: white;
+  font-size: 14px;
+  margin-left: 12px;
+  border-radius: 4px;
+  padding: 6px 24px;
+}
+
+.ShowCase {
+  margin: 0 0 48px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background: #3b3b3b;
+  padding: 12px;
+  border-radius: 4px;
+  color: #7e7e7e;
+}
+
+.ShowCase li {
+  margin: 0 12px;
+}
+
+.Cinema {
+  margin-bottom: 18px;
+  perspective: 400px;
+
+  display: grid;
+  place-items: center;
+  grid-gap: 24px;
+}
+
+.Cinema .screen {
+  height: 70px;
+  background: white;
+  width: 100%;
+  transform: rotateX(-30deg) scale(1.1);
+  box-shadow: 0 3px 10px 2px;
+}
+
+.Cinema .seats {
+  display: grid;
+  grid-gap: 6px;
+  grid-template-columns: repeat(8, min-content);
+  align-items: center;
+}
+
+.Cinema .seats .seat:nth-of-type(8n + 2) {
+  margin-right: 12px;
+}
+
+.Cinema .seats .seat:nth-of-type(8n + 6) {
+  margin-right: 12px;
+}
+
+.Cinema .seats .seat:not(.occupied):hover,
+.Cinema .seats .seat:not(.occupied):focus {
+  cursor: pointer;
+  background: #c1eac5;
+  transform: scale(1.2);
+}
+
+.Cinema .seats .seat.selected::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  background: transparent;
+  border: 1px solid #7bc47f;
+  animation: show-off 0.8s;
+  visibility: hidden;
+}
+
+@keyframes show-off {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.seat {
+  display: inline-block;
+  background: #626262;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease-in-out;
+
+  position: relative;
+  top: 1px;
+}
+
+.seat.selected {
+  background: #7bc47f !important;
+}
+
+.seat.occupied {
+  background: #cfcfcf;
+}
+
+.info .count {
+  color: #7bc47f;
+}
+
+.info .total {
+  color: #7bc47f;
+}
