@@ -23,7 +23,7 @@ function App() {
         </ul>
       </div>
 
-      <div className="clearfix mt-2">
+      <div className="clearfix mt-5">
         <BookTickets handleStepChange={handleStepChange} />
       </div>
     </div>

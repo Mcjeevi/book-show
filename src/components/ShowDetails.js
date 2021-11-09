@@ -24,13 +24,14 @@ const Showdetails = (props) => {
         });
     }, []);
 
-    const ChangeteCity = (e) => {
-        axios.get('https://my-json-server.typicode.com/McJeevi/demo/theaters?city_id=' + e.target.value).then(response => {
-            setTheaterList(response.data)
+    useEffect((item) => {
+        if(data.city)
+        axios.get('https://my-json-server.typicode.com/McJeevi/demo/theaters?city_id=' + data.city).then(response => {
+                setTheaterList(response.data)
+            });
+    }, [data.city])
 
-        });
-        handleChange(e);
-    }
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         if (validateForm()) {
@@ -42,7 +43,6 @@ const Showdetails = (props) => {
             fields["tickets"] = data.tickets;
             fields["time"] = data.time;
             setFields(fields);
-            // alert("Form submitted");
             handleShow(fields)
             next()
 
@@ -75,13 +75,8 @@ const Showdetails = (props) => {
             formIsValid = false;
             errors["time"] = "*Please select your time.";
         }
-
-
-
         setErrors(errors);
         return formIsValid;
-
-
     }
 
     return (
@@ -93,7 +88,7 @@ const Showdetails = (props) => {
                             <div className="row mb-2">
                                 <div className="col-4">City</div>
                                 <div className="col-8">
-                                    <select className="form-control" name="city" value={data.city} onChange={ChangeteCity}  >
+                                    <select className="form-control" name="city" value={data.city} onChange={handleChange}  >
                                         <option defaultValue>City</option>
                                         {cityData.map((e, key) => {
                                             return <option key={key} value={e.id}>{e.city}</option>;

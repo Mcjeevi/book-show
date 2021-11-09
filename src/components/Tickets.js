@@ -3,8 +3,8 @@ import './Ticket.css';
 
 const Tickets = (props) => {
     const { data, seatsData, form, handleChange, next, back } = props;
-    const details = { ...form, ...{ seats: seatsData } }
-    debugger
+    const details = {...form, ...{seats: seatsData}};
+    // debugger
     return (
         <div className="paymentCard p-4">
             <div className="cardWrap clearfix shadow">
@@ -18,7 +18,7 @@ const Tickets = (props) => {
                         <h6>{data.time}</h6>
                         <p><span>Quantity:</span> {data.tickets}</p>
                         <h4>
-                            {seatsData.map((item, i) => (<span key={i}>{i > 0 && ','}{item.seat}</span>))}
+                            {seatsData.map((item, i) => (<span key={i}>{i > 0 && ','}{item}</span>))}
                         </h4>
                         <div>
                             <table className="table">
@@ -52,8 +52,7 @@ const Tickets = (props) => {
             </div>
             <div className="mt-2">
                 <div className="container">
-                    <div className="txt-center" style={{ overflowX: 'auto' }}>
-                        <button className="mx-1" onClick={back}>Back</button>
+                    <div className="txt-center" style={{overflowX: 'auto'}}>
                         <button className="mx-1" onClick={back}>Back</button>
                     </div>
                 </div>

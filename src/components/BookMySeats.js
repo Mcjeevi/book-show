@@ -3,10 +3,12 @@ import axios from 'axios';
 
 
 
-const bookedSeats = ['A1', 'A2']
+// const bookedSeats = ['A1','A2']
+
+// debugger
 
 const SeatBooking = (props) => {
-    const { data, handleSeatChange, next, back } = props;
+    const { data, seatsData, handleSeatChange, next, back } = props;
 
     const [selectingSeats, setSelectingSeats] = useState([]);
 
@@ -17,8 +19,7 @@ const SeatBooking = (props) => {
         } else {
             const newArray = [...selectingSeats, event.target.value]
             if (newArray.length > parseInt(data.tickets)) {
-                alert('Selected tickets only ' + data.tickets)
-
+                alert('Only can select seats are' + data.tickets);
                 event.target.checked = false
             } else {
                 setSelectingSeats(newArray)
@@ -27,17 +28,25 @@ const SeatBooking = (props) => {
         }
 
     };
+    
+
+    // useEffect((item) => {
+    //     setSelectingSeats(bookedSeats)
+    // }, [])
 
     useEffect((item) => {
-
-        setSelectingSeats(bookedSeats)
-    }, [])
+        let selectedSeats = [];
+        seatsData.map((item) => {
+            selectedSeats.push(item)
+        })
+        setSelectingSeats(selectedSeats)
+    }, [seatsData])
     
 
     const selectSeats = () => {
-        const selected = selectingSeats
-        if (selected.length !== 0) {
-            handleSeatChange(selected)
+        // const selected = selectingSeats
+        if (selectingSeats.length !== 0) {
+            handleSeatChange(selectingSeats);
             next()
         }
         else {
@@ -46,9 +55,8 @@ const SeatBooking = (props) => {
     };
 
     const getSeatObject = (seatNumber) => {
-
-        if (bookedSeats.includes(seatNumber)) {
-            return bookedSeats.filter(thisSeat => thisSeat === seatNumber);
+        if (selectingSeats.includes(seatNumber)) {
+            return selectingSeats.filter(thisSeat => thisSeat === seatNumber);
         }
     };
 
@@ -75,7 +83,7 @@ const SeatBooking = (props) => {
                                                 <td key={index} className="seatGap" />
                                                 :
                                                 <td key={index}>
-                                                    <input onChange={choiceSeat} disabled={getSeatObject(`${row}${column}`) ? getSeatObject(`${row}${column}`) : false} name={`${row}${column}`} type="checkbox" className="seats"
+                                                    <input onChange={choiceSeat} checked={getSeatObject(`${row}${column}`) ? getSeatObject(`${row}${column}`) : false} name={`${row}${column}`} type="checkbox" className="seats"
                                                         id={`${row}${column}`} value={`${row}${column}`}
                                                     />
                                                 </td>

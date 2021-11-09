@@ -6,7 +6,7 @@ import Tickets from "./Tickets";
 
 const BookTickets = (props) => {
     const { handleStepChange } = props;
-    const [currentStep, setCurrentStep] = useState(2);
+    const [currentStep, setCurrentStep] = useState(1);
     const [formData, setFormData] = useState({
         city: '',
         movie: '',
@@ -23,10 +23,10 @@ const BookTickets = (props) => {
         });
     };
     const handleSeatChange = (seat) => {
-        setSeats(...seats, seat);
+        setSeats(seat);
     };
     const handleShow = (show) => {
-        setShows(...shows, show);
+        setShows(show);
     };
     const next = () => {
         setCurrentStep(currentStep + 1);
@@ -52,6 +52,7 @@ const BookTickets = (props) => {
             return (
                 <BookMySeats
                     data={formData}
+                    seatsData={seats}
                     handleSeatChange={handleSeatChange}
                     next={next}
                     back={back} />
